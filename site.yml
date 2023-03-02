@@ -8,17 +8,28 @@
   - name: install updates (centos)
     tags: always
     yum:
-      update_only: yes
       update_cache: yes
-
+    changed_when: false
     when: ansible_distribution == "CentOS"
 
   - name: install update (ubuntu)
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: create ssh key for user milad
+    tags: always
+    authorized_key:
+      user: milad
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEfjPaOBJ1LxdRTdu+YARS/PJBtfcf/c7aqdP7r50oGO root@ansible-node"
+
+
 
 - hosts: workstation
   become: true
