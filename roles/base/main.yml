@@ -1,0 +1,5 @@
+  - name: create ssh key for user milad
+    tags: always
+    authorized_key:
+      user: milad
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEfjPaOBJ1LxdRTdu+YARS/PJBtfcf/c7aqdP7r50oGO root@ansible-node"
