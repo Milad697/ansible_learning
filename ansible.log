@@ -438,3 +438,135 @@ The offending line appears to be:
 2023-03-02 14:41:45,902 p=18369 u=root n=ansible | 192.168.32.130             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2023-03-02 14:41:45,903 p=18369 u=root n=ansible | 192.168.32.131             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 2023-03-02 14:41:45,903 p=18369 u=root n=ansible | 192.168.32.132             : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-03-02 16:26:43,814 p=21531 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-02 16:26:43,836 p=21531 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-02 16:26:47,134 p=21531 u=root n=ansible | fatal: [192.168.32.130]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.130 port 22: No route to host", "unreachable": true}
+2023-03-02 16:26:47,163 p=21531 u=root n=ansible | fatal: [192.168.32.131]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.131 port 22: No route to host", "unreachable": true}
+2023-03-02 16:26:47,310 p=21531 u=root n=ansible | ok: [192.168.32.129]
+2023-03-02 16:27:03,385 p=21531 u=root n=ansible | ok: [192.168.32.132]
+2023-03-02 16:27:03,398 p=21531 u=root n=ansible | TASK [install updates (centos)] *********************************************************************************************************
+2023-03-02 16:27:03,538 p=21531 u=root n=ansible | skipping: [192.168.32.129]
+2023-03-02 16:27:04,630 p=21531 u=root n=ansible | ok: [192.168.32.132]
+2023-03-02 16:27:04,645 p=21531 u=root n=ansible | TASK [install update (ubuntu)] **********************************************************************************************************
+2023-03-02 16:27:04,810 p=21531 u=root n=ansible | skipping: [192.168.32.132]
+2023-03-02 16:27:56,518 p=21531 u=root n=ansible | ok: [192.168.32.129]
+2023-03-02 16:27:56,529 p=21531 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-02 16:27:56,541 p=21531 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-02 16:27:58,124 p=21531 u=root n=ansible | ok: [192.168.32.129]
+2023-03-02 16:28:13,755 p=21531 u=root n=ansible | ok: [192.168.32.132]
+2023-03-02 16:28:13,764 p=21531 u=root n=ansible | PLAY [workstation] **********************************************************************************************************************
+2023-03-02 16:28:13,776 p=21531 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-02 16:28:15,143 p=21531 u=root n=ansible | ok: [192.168.32.129]
+2023-03-02 16:28:15,154 p=21531 u=root n=ansible | PLAY [web_servers] **********************************************************************************************************************
+2023-03-02 16:28:15,166 p=21531 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-02 16:28:16,772 p=21531 u=root n=ansible | ok: [192.168.32.129]
+2023-03-02 16:28:46,261 p=21531 u=root n=ansible | ok: [192.168.32.132]
+2023-03-02 16:28:46,271 p=21531 u=root n=ansible | PLAY [db_servers] ***********************************************************************************************************************
+2023-03-02 16:28:46,276 p=21531 u=root n=ansible | PLAY [file_servers] *********************************************************************************************************************
+2023-03-02 16:28:46,279 p=21531 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************
+2023-03-02 16:28:46,279 p=21531 u=root n=ansible | 192.168.32.129             : ok=5    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-03-02 16:28:46,280 p=21531 u=root n=ansible | 192.168.32.130             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-02 16:28:46,280 p=21531 u=root n=ansible | 192.168.32.131             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-02 16:28:46,281 p=21531 u=root n=ansible | 192.168.32.132             : ok=4    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-03-03 00:23:30,428 p=33582 u=root n=ansible | ERROR! Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/root/ansible_learning/roles/web_servers/tasks/main.yml': line 2, column 9, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+- name: install apache and php packages
+    tags: apache,apache2,httpd
+        ^ here
+
+2023-03-03 00:25:31,821 p=33651 u=root n=ansible | ERROR! Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/root/ansible_learning/roles/web_servers/tasks/main.yml': line 3, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+  tags: apache,apache2,httpd
+    package:
+           ^ here
+
+2023-03-03 00:28:29,788 p=33730 u=root n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/root/ansible_learning/roles/web_servers/tasks/main.yml': line 9, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+  - name: start and enable apache service
+  ^ here
+
+2023-03-03 00:33:05,642 p=33850 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-03 00:33:05,671 p=33850 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:33:09,030 p=33850 u=root n=ansible | fatal: [192.168.32.130]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.130 port 22: No route to host", "unreachable": true}
+2023-03-03 00:33:09,088 p=33850 u=root n=ansible | fatal: [192.168.32.131]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.131 port 22: No route to host", "unreachable": true}
+2023-03-03 00:33:10,745 p=33850 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:33:26,107 p=33850 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:33:26,124 p=33850 u=root n=ansible | TASK [install updates (centos)] *********************************************************************************************************
+2023-03-03 00:33:26,264 p=33850 u=root n=ansible | skipping: [192.168.32.129]
+2023-03-03 00:33:27,361 p=33850 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:33:27,375 p=33850 u=root n=ansible | TASK [install update (ubuntu)] **********************************************************************************************************
+2023-03-03 00:33:27,555 p=33850 u=root n=ansible | skipping: [192.168.32.132]
+2023-03-03 00:33:48,884 p=33850 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:33:48,897 p=33850 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-03 00:33:48,911 p=33850 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:33:50,596 p=33850 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:34:05,854 p=33850 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:34:05,863 p=33850 u=root n=ansible | PLAY [workstation] **********************************************************************************************************************
+2023-03-03 00:34:05,874 p=33850 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:34:07,229 p=33850 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:34:07,238 p=33850 u=root n=ansible | PLAY [web_servers] **********************************************************************************************************************
+2023-03-03 00:34:07,251 p=33850 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:34:08,882 p=33850 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:34:24,236 p=33850 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:34:24,252 p=33850 u=root n=ansible | TASK [web_servers : install apache and php packages] ************************************************************************************
+2023-03-03 00:34:25,730 p=33850 u=root n=ansible | fatal: [192.168.32.129]: FAILED! => {"changed": false, "msg": "No package matching 'libapache2_mod_php' is available"}
+2023-03-03 00:35:01,086 p=33850 u=root n=ansible | fatal: [192.168.32.132]: FAILED! => {"changed": true, "changes": {"installed": ["httpd", "php"], "updated": []}, "msg": "Error: Package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64 (base)\n           Requires: /etc/mime.types\nError: Package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64 (base)\n           Requires: liblua-5.3.so()(64bit)\nError: Package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64 (base)\n           Requires: libpcre2-8.so.0()(64bit)\nError: Package: apr-util-1.6.1-6.el8.x86_64 (base)\n           Requires: libcrypt.so.1(XCRYPT_2.0)(64bit)\nError: Package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64 (base)\n           Requires: libcrypt.so.1(XCRYPT_2.0)(64bit)\nError: Package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64 (base)\n           Requires: libc.so.6(GLIBC_2.27)(64bit)\nError: Package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64 (base)\n           Requires: libcrypt.so.1(XCRYPT_2.0)(64bit)\nError: Package: apr-util-1.6.1-6.el8.x86_64 (base)\n           Requires: libc.so.6(GLIBC_2.25)(64bit)\nError: Package: httpd-tools-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64 (base)\n           Requires: libcrypt.so.1(XCRYPT_2.0)(64bit)\n", "obsoletes": {"authconfig": {"dist": "x86_64", "repo": "@anaconda", "version": "6.2.8-30.el7"}, "iwl7265-firmware": {"dist": "noarch", "repo": "@anaconda", "version": "22.0.7.0-72.el7"}, "libselinux-python": {"dist": "x86_64", "repo": "@anaconda", "version": "2.5-14.1.el7"}, "mariadb-libs": {"dist": "x86_64", "repo": "@anaconda", "version": "1:5.5.64-1.el7"}}, "rc": 1, "results": ["Loaded plugins: fastestmirror\nLoading mirror speeds from cached hostfile\n * base: mirror.netzwerge.de\n * epel: mirror.cloudhosting.lv\n * extras: mirrors.xtom.de\n * updates: mirror.23m.com\nResolving Dependencies\n--> Running transaction check\n---> Package httpd.x86_64 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: httpd-filesystem = 2.4.37-54.module_el8.8.0+1256+e1598b50 for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: httpd-tools = 2.4.37-54.module_el8.8.0+1256+e1598b50 for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: mod_http2 >= 1.15.7-5 for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: /etc/mime.types for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: httpd-filesystem for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: system-logos(httpd-logo-ng) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libapr-1.so.0()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libaprutil-1.so.0()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libbrotlienc.so.1()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: liblua-5.3.so()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n---> Package php.x86_64 0:8.0.20-2.module_el8.7.0+1194+8fdb2cc9 will be installed\n--> Processing Dependency: php-common(x86-64) = 8.0.20-2.module_el8.7.0+1194+8fdb2cc9 for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libcrypto.so.1.1(OPENSSL_1_1_0)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libssl.so.1.1(OPENSSL_1_1_0)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libc.so.6(GLIBC_2.27)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libcrypto.so.1.1()(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libpcre2-8.so.0()(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libssl.so.1.1()(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Running transaction check\n---> Package apr.x86_64 0:1.6.3-12.el8 will be installed\n---> Package apr-util.x86_64 0:1.6.1-6.el8 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: apr-util-1.6.1-6.el8.x86_64\n--> Processing Dependency: libc.so.6(GLIBC_2.25)(64bit) for package: apr-util-1.6.1-6.el8.x86_64\n---> Package centos-logos-httpd.noarch 0:85.8-2.el8 will be installed\n---> Package httpd.x86_64 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: /etc/mime.types for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: liblua-5.3.so()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n---> Package httpd-filesystem.noarch 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n---> Package httpd-tools.x86_64 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: httpd-tools-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n---> Package libbrotli.x86_64 0:1.0.9-10.el7 will be installed\n---> Package mod_http2.x86_64 0:1.15.7-7.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: libnghttp2.so.14()(64bit) for package: mod_http2-1.15.7-7.module_el8.8.0+1256+e1598b50.x86_64\n---> Package openssl11-libs.x86_64 1:1.1.1k-5.el7 will be installed\n---> Package php.x86_64 0:8.0.20-2.module_el8.7.0+1194+8fdb2cc9 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libc.so.6(GLIBC_2.27)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libpcre2-8.so.0()(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n---> Package php-common.x86_64 0:8.0.20-2.module_el8.7.0+1194+8fdb2cc9 will be installed\n--> Running transaction check\n---> Package apr-util.x86_64 0:1.6.1-6.el8 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: apr-util-1.6.1-6.el8.x86_64\n--> Processing Dependency: libc.so.6(GLIBC_2.25)(64bit) for package: apr-util-1.6.1-6.el8.x86_64\n---> Package httpd.x86_64 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: /etc/mime.types for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Processing Dependency: liblua-5.3.so()(64bit) for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n---> Package httpd-tools.x86_64 0:2.4.37-54.module_el8.8.0+1256+e1598b50 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: httpd-tools-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n---> Package libnghttp2.x86_64 0:1.33.0-1.1.el7 will be installed\n---> Package php.x86_64 0:8.0.20-2.module_el8.7.0+1194+8fdb2cc9 will be installed\n--> Processing Dependency: libcrypt.so.1(XCRYPT_2.0)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libc.so.6(GLIBC_2.27)(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: libpcre2-8.so.0()(64bit) for package: php-8.0.20-2.module_el8.7.0+1194+8fdb2cc9.x86_64\n--> Processing Dependency: /etc/mime.types for package: httpd-2.4.37-54.module_el8.8.0+1256+e1598b50.x86_64\n--> Finished Dependency Resolution\n You could try using --skip-broken to work around the problem\n You could try running: rpm -Va --nofiles --nodigest\n"]}
+2023-03-03 00:35:01,093 p=33850 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************
+2023-03-03 00:35:01,094 p=33850 u=root n=ansible | 192.168.32.129             : ok=5    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2023-03-03 00:35:01,094 p=33850 u=root n=ansible | 192.168.32.130             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-03 00:35:01,095 p=33850 u=root n=ansible | 192.168.32.131             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-03 00:35:01,095 p=33850 u=root n=ansible | 192.168.32.132             : ok=4    changed=0    unreachable=0    failed=1    skipped=1    rescued=0    ignored=0   
+2023-03-03 00:42:51,281 p=34259 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-03 00:42:51,300 p=34259 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:42:54,584 p=34259 u=root n=ansible | fatal: [192.168.32.130]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.130 port 22: No route to host", "unreachable": true}
+2023-03-03 00:42:54,617 p=34259 u=root n=ansible | fatal: [192.168.32.131]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.32.131 port 22: No route to host", "unreachable": true}
+2023-03-03 00:42:54,643 p=34259 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:43:10,480 p=34259 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:43:10,496 p=34259 u=root n=ansible | TASK [install updates (centos)] *********************************************************************************************************
+2023-03-03 00:43:10,630 p=34259 u=root n=ansible | skipping: [192.168.32.129]
+2023-03-03 00:43:11,738 p=34259 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:43:11,750 p=34259 u=root n=ansible | TASK [install update (ubuntu)] **********************************************************************************************************
+2023-03-03 00:43:11,914 p=34259 u=root n=ansible | skipping: [192.168.32.132]
+2023-03-03 00:43:17,829 p=34259 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:43:17,841 p=34259 u=root n=ansible | PLAY [all] ******************************************************************************************************************************
+2023-03-03 00:43:17,854 p=34259 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:43:19,507 p=34259 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:43:34,830 p=34259 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:43:34,839 p=34259 u=root n=ansible | PLAY [workstation] **********************************************************************************************************************
+2023-03-03 00:43:34,853 p=34259 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:43:36,277 p=34259 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:43:36,283 p=34259 u=root n=ansible | PLAY [web_servers] **********************************************************************************************************************
+2023-03-03 00:43:36,295 p=34259 u=root n=ansible | TASK [Gathering Facts] ******************************************************************************************************************
+2023-03-03 00:43:37,919 p=34259 u=root n=ansible | ok: [192.168.32.129]
+2023-03-03 00:43:53,379 p=34259 u=root n=ansible | ok: [192.168.32.132]
+2023-03-03 00:43:53,392 p=34259 u=root n=ansible | TASK [web_servers : change apache timeout] **********************************************************************************************
+2023-03-03 00:43:53,568 p=34259 u=root n=ansible | skipping: [192.168.32.132]
+2023-03-03 00:43:54,149 p=34259 u=root n=ansible | changed: [192.168.32.129]
+2023-03-03 00:43:54,151 p=34259 u=root n=ansible | RUNNING HANDLER [web_servers : restart_apache] ******************************************************************************************
+2023-03-03 00:43:55,641 p=34259 u=root n=ansible | changed: [192.168.32.129]
+2023-03-03 00:43:55,653 p=34259 u=root n=ansible | PLAY [db_servers] ***********************************************************************************************************************
+2023-03-03 00:43:55,661 p=34259 u=root n=ansible | PLAY [file_servers] *********************************************************************************************************************
+2023-03-03 00:43:55,664 p=34259 u=root n=ansible | PLAY RECAP ******************************************************************************************************************************
+2023-03-03 00:43:55,665 p=34259 u=root n=ansible | 192.168.32.129             : ok=7    changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+2023-03-03 00:43:55,665 p=34259 u=root n=ansible | 192.168.32.130             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-03 00:43:55,666 p=34259 u=root n=ansible | 192.168.32.131             : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2023-03-03 00:43:55,666 p=34259 u=root n=ansible | 192.168.32.132             : ok=4    changed=0    unreachable=0    failed=0    skipped=2    rescued=0    ignored=0   
