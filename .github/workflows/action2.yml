@@ -4,7 +4,7 @@ on: push
 
 jobs:
   init:
-  runs-on: self-hosted
-  steps:
-    - run: echo ' hi milad master'
-    - run: echo "$hostname"
+    runs-on: self-hosted
+    steps:
+      - run: echo 'hi milad master'
+      - run: echo "$HOSTNAME"
