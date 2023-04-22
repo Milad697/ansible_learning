@@ -1,7 +1,7 @@
 name: deploy on lambda
 
 on:
-  pushe:
+  push:
     branches:
       - main
 jobs:
